@@ -2,7 +2,6 @@ package com.crustpizza.newstest.data.repository
 
 import com.crustpizza.newstest.data.Result
 import com.crustpizza.newstest.data.model.ModelNewsResponse
-import com.crustpizza.newstest.data.remote.ApiResponse
 import com.crustpizza.newstest.data.remote.NetworkResource
 import com.crustpizza.newstest.data.remote.api.HeadlinesApiInterface
 import com.crustpizza.newstest.di.IoDispatcher
