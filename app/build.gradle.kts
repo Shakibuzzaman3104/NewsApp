@@ -80,12 +80,7 @@ dependencies {
 
 
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.databinding.common)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.databinding.runtime)
     annotationProcessor(libs.androidx.room.compiler)
 
     implementation (libs.logging.interceptor)
@@ -97,6 +92,7 @@ dependencies {
 
 
     implementation (libs.glide)
+
 
 
     implementation (libs.timber)
