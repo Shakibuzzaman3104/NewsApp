@@ -6,6 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface IHeadlinesRepository {
 
-    suspend fun fetchTopHeadlines(country: String?, category:String?): Flow<Result<ModelNewsResponse>>
+    suspend fun fetchTopHeadlines(
+        country: String? = null,
+        category: String? = null
+    ): Flow<Result<ModelNewsResponse>>
 
 }
