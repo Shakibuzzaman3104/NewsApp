@@ -3,6 +3,8 @@ package com.crustpizza.newstest.di
 import com.crustpizza.newstest.data.remote.api.EverythingApiInterface
 import com.crustpizza.newstest.data.remote.api.HeadlinesApiInterface
 import com.crustpizza.newstest.data.remote.api.TopNewsSourcesApi
+import com.crustpizza.newstest.data.repository.NewsSourcesRepository
+import com.crustpizza.newstest.domain.irepository.INewsSourcesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +30,9 @@ object ApiModule {
     fun provideTopNewsSourceApi(retrofit: Retrofit): TopNewsSourcesApi {
         return retrofit.create(TopNewsSourcesApi::class.java)
     }
+
+    @Provides
+    fun provideNewsSourceRepository(newsSourcesRepository: NewsSourcesRepository): INewsSourcesRepository =
+        newsSourcesRepository
 
 }

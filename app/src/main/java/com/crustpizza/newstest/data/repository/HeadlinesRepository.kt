@@ -10,8 +10,9 @@ import com.crustpizza.newstest.utils.ControlledRunner
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class HeadlinesRepository(
+class HeadlinesRepository @Inject constructor(
     @IoDispatcher val dispatcher: CoroutineDispatcher,
     private val apiInterface: HeadlinesApiInterface
 ) : IHeadlinesRepository {

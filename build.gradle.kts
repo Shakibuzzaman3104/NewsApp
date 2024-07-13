@@ -8,7 +8,6 @@ buildscript {
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
-    id("com.google.devtools.ksp") version "2.0.0-1.0.22" apply false
+    alias(libs.plugins.ksp) apply false
     id("com.google.dagger.hilt.android") version "2.49" apply false
-
 }

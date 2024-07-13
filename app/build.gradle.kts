@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    id ("kotlin-kapt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
@@ -32,6 +33,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        dataBinding = true
     }
 
     compileOptions {
@@ -58,13 +60,11 @@ secrets {
     ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
 }
 
-kapt {
-    correctErrorTypes = true
-}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation (libs.androidx.fragment.ktx)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
@@ -72,25 +72,27 @@ dependencies {
 
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
+    implementation (libs.moshi)
+    implementation (libs.moshi.kotlin)
     implementation (libs.converter.moshi)
+    implementation (libs.moshi.adapters)
+    ksp(libs.moshi.kotlin.codegen)
 
 
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.databinding.common)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.databinding.runtime)
     annotationProcessor(libs.androidx.room.compiler)
 
     implementation (libs.logging.interceptor)
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation (libs.androidx.hilt.work)
+    implementation (libs.androidx.work.runtime.ktx)
+
 
     implementation (libs.glide)
+
 
 
     implementation (libs.timber)

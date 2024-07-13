@@ -2,6 +2,7 @@ package com.crustpizza.newstest.di
 
 import com.crustpizza.newstest.BuildConfig
 import com.crustpizza.newstest.data.remote.FlowCallAdapterFactory
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +30,6 @@ object AppModule {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             build.addInterceptor(httpLoggingInterceptor)
         }
-
         return build.build()
     }
 
@@ -39,10 +39,11 @@ object AppModule {
     fun provideRetrofitInstance(
         okHttpClient: OkHttpClient
     ): Retrofit {
+        val moshi = Moshi.Builder().build()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(FlowCallAdapterFactory())
             .build()
     }
